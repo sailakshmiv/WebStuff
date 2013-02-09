@@ -25,7 +25,7 @@ body {
     font-weight: 700;
 }
 
-#lgn_button {
+.button{
     font-weight:bold;
     height: 22px;
     width: 150px;
@@ -33,7 +33,7 @@ body {
     background-color: #CCCCCC;
     border-radius: 5px;
     text-align: center;
-    border: 2px solid #FFFFCC;
+    border: 2px solid #FFFFCC;  
 }
 
 #login_link {

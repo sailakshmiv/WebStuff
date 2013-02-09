@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	h2 Please create an account.
+	br
+	#RegisterForm
+		form(method='post', action='/register')
+			table
+				tr
+					td User Name:
+					td
+						input(id='actName', type='text', name='actName')
+				tr
+					td Password:
+					td
+						input(id='actPass', type='text', name='actPass')
+			br
+			input(class='button', type='submit')
+			br
+			br
