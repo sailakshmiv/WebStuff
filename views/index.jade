@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	h2#title The phat way to track your fat loss.
+	#BaseImg 
+		img(id='titlephoto', src='images/iStock_weighing_scales.jpg')
+	br
+	#LoginForm
+		form(method='post', action="/")
+			table
+				tr
+					td Login Name:
+					td 
+						input(id='loginId', type='text', name='username')
+				tr
+					td Login Pass:
+					td 
+						input(id='loginPass', type='password', name='password')
+			br	
+			input(id='lgn_button', type='submit')

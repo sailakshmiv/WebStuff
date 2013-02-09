@@ -1,0 +1,199 @@
+<html>
+	<head></head>
+	<body>
+		<h2>layout.jade</h2>
+		<pre>
+doctype 5
+html
+	head
+		title #{title}
+		link(rel='stylesheet', href='/stylesheets/georgeclinton.css')
+		script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js')
+		script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js')
+		script(type='text/javascript', src='/javascripts/login.js')
+body
+
+block content
+
+footer
+	Copyright &copy2013
+		</pre>
+		<h2>index.jade</h2>
+		<pre>
+extends layout
+
+block content
+	h2#title The phat way to track your fat loss.
+	#BaseImg 
+		img(id='titlephoto', src='images/iStock_weighing_scales.jpg')
+	br
+	#LoginForm
+		form(method='post')
+			table
+				tr
+					td Login Name:
+					td 
+						input(id='loginId', type='text')
+				tr
+					td Login Pass:
+					td 
+						input(id='loginPass', type='password')
+
+		a(id='login_link', href='welcome.html')
+			br
+			#lgn_button Login
+		</pre>
+		<h2>index.js</h2>
+			<pre>
+exports.index = function(req, res){
+	res.render('index', { title: "Track that fat!" });
+};
+			</pre>
+		<h2>app.js</h2>
+		<pre>
+var express = require('express')
+  , routes = require('./routes')
+  , user = require('./routes/user')
+  , htmlz = require('./routes/htmlz')
+  , http = require('http')
+  , path = require('path')
+  , fs = require('fs');
+
+var app = express();
+
+app.configure(function(){
+  app.set('port', process.env.PORT || 8080);
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade');
+  app.use(express.favicon());
+  app.use(express.logger('dev'));
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(app.router);
+  app.use(express.static(path.join(__dirname, 'public')));
+});
+
+app.configure('development', function(){
+  app.use(express.errorHandler());
+});
+
+app.get('/', routes.index);
+app.get('/welcome', htmlz.welcome);
+app.get('/users', user.list);
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log("Express server listening on port " + app.get('port'));
+});
+
+	</pre>
+	<h2>layout2.jade</h2> <b>I'm going to change the scripts passed as variables and consolidate to layout.jade</b>
+	<pre>
+doctype 5
+html
+	head
+		title #{title}
+		link(rel='stylesheet', href='/stylesheets/ui-darkness/jquery-ui-1.10.0.custom.css')
+		link(rel='stylesheet', href='/stylesheets/tabs.css')
+		script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js')
+		script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js')
+		script(type='text/javascript', src='/javascripts/welcome.js')
+body
+
+block content
+
+footer
+	Copyright &copy2013
+	</pre>
+	<h2>welcome.jade</h2><b>I went to install a jade syntax viewer and saw an html2jade converter... works pretty well</b>
+	<pre>
+extends layout2
+
+block content
+    #myTabs
+      ul
+        li
+          a#tHome(href='#home')
+            span home
+        li
+          a#tAbout(href='#about')
+            span about me
+        li
+          a#tHelp(href='#help')
+            span help
+      #home
+      #about
+        p Welcome [username placeholder]!  Tell us about yourself.
+        .demoG
+          div(style='margin: 5px;')
+            p Your profile:
+            br
+            form
+              table
+                tr
+                  td First Name: 
+                  td
+                    input(type='text', name='fname')
+                tr
+                  td Last Name: 
+                  td
+                    input(type='text', name='lname')
+                tr
+                  td Email: 
+                  td
+                    input(type='email', name='email')
+                tr#append
+                  td DOB: 
+                  td
+                    input#dob(type='date', name='dob')
+                tr
+                  td Gender: 
+                  td
+                    select#selector
+                      option Female
+                      option Male
+                tr
+                  td Starting Weight: 
+                  td
+                    input(type='text', name='weight')
+                tr
+                  td Goal Weight: 
+                  td
+                    input(type='text', name='goal')
+              br
+            button#save Save
+            button#addPicture Add Picture
+        .picture
+          img.picture(src='images/nightlife-q-c-450-450-6.jpg')
+        #clear
+      #help
+	</pre>
+  <h2>json stringify problem</h2>
+  <pre>
+var fs = require('fs');
+eval(fs.readFileSync('json2.js') + '');
+
+var myObjArray = [];
+var myArray = ["1234567890abcdefgh","first","last","2234567890abcdefgh","wayne","goyer"];
+var record = {};
+for(i=0;i&ltmyArray.length;i++){
+  if (myArray[i].length === 18){
+     record = {
+      id: myArray[i],
+      fname: myArray[i+1],
+      lname: myArray[i+2]
+    };
+    myObjArray.push(record);
+  }
+}
+
+console.log("The record object: "+myObjArray[1]);
+console.log(JSON.stringify(myObjArray));
+</pre>
+<p><b>The output of this looks like this:<b></p>
+<pre>
+The record object: [object Object]
+[{"id":"1234567890abcdefgh","fname":"first","lname":"last"},{"id":"2234567890abcdefgh","fname":"wayne","lname":"goyer"}]
+</pre>
+
+	</body>
+</html>

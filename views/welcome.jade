@@ -1,0 +1,60 @@
+extends layout2
+
+block content
+    #myTabs
+      ul
+        li
+          a#tHome(href='#home')
+            span home
+        li
+          a#tAbout(href='#about')
+            span about me
+        li
+          a#tHelp(href='#help')
+            span help
+      #home
+      #about
+        p Welcome !{lgnUser}!  Tell us about yourself.
+        .demoG
+          div(style='margin: 5px;')
+            p Your profile:
+            br
+            form
+              table
+                tr
+                  td First Name: 
+                  td
+                    input(type='text', name='fname')
+                tr
+                  td Last Name: 
+                  td
+                    input(type='text', name='lname')
+                tr
+                  td Email: 
+                  td
+                    input(type='email', name='email')
+                tr#append
+                  td DOB: 
+                  td
+                    input#dob(type='date', name='dob')
+                tr
+                  td Gender: 
+                  td
+                    select#selector
+                      option Female
+                      option Male
+                tr
+                  td Starting Weight: 
+                  td
+                    input(type='text', name='weight')
+                tr
+                  td Goal Weight: 
+                  td
+                    input(type='text', name='goal')
+              br
+            button#save Save
+            button#addPicture Add Picture
+        .picture
+          img.picture(src='images/nightlife-q-c-450-450-6.jpg')
+        #clear
+      #help
