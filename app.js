@@ -73,6 +73,21 @@ function ensureAuthenticated(req,res,next){
 }
 
 mongoose.connect('mongodb://127.0.0.1/passportTest');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function dbActivity(){
+  var mySchema = mongoose.Schema({
+    _id: String,
+    username: String
+  });
+  var myData = mongoose.model('accounts', mySchema);
+  myData.find({}, function results(err, docs){
+    console.log(docs[0].username);
+  });
+
+});
+
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
