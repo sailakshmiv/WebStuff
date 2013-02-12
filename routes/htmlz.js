@@ -4,12 +4,13 @@
  */
 
 exports.welcome = function(req, res){
+	var aTest = "This variable is in the welcome function.";
 	res.render('welcome', {
 		title: "Welcome to Fat Track!",
 		lgnUser: req.user.username,
 		firstItem: req.user._id,
 		secondItem: req.user.username,
-		thirdItem: 'Last item place holder.'
+		thirdItem: aTest
 	});
 };
 
