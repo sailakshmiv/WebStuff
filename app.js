@@ -41,7 +41,7 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
-
+var aTest = "Passed from app.js";
 app.get('/', routes.index);
 app.get ('/register', htmlz.register);
 app.get('/logout', function(req,res){
@@ -80,9 +80,16 @@ db.once('open', function dbActivity(){
     _id: String,
     username: String
   });
-  var myData = mongoose.model('accounts', mySchema);
-  myData.find({}, function results(err, docs){
-    console.log(docs[0].username);
+  var theUserData = mongoose.Schema({
+    age: String,
+    fName: String,
+    lName: String,
+    userId: String
+  }, {collection: 'userData'});
+  var userData = mongoose.model('userData', theUserData);
+
+  userData.find({userId: '5116baf5c01b094812000002'}, function results(err, docs){
+    console.log(docs[0]);
   });
 
 });
