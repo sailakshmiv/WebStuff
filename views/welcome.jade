@@ -14,9 +14,9 @@ block content
             span help
       #home
         #testDiv
-          p Welcome !{firstItem}, !{secondItem}, !{thirdItem}
+          p Welcome !{firstName}, !{lastName}, !{userAge}
       #about
-        p Welcome !{lgnUser}!  Tell us about yourself.
+        p Welcome !{firstName}!  Tell us about yourself.
         .demoG
           div(style='margin: 5px;')
             p Your profile:
@@ -26,11 +26,11 @@ block content
                 tr
                   td First Name: 
                   td
-                    input(type='text', name='fname')
+                    input(type='text', name='fname', value='#{firstName}')
                 tr
                   td Last Name: 
                   td
-                    input(type='text', name='lname')
+                    input(type='text', name='lname', value='#{lastName}')
                 tr
                   td Email: 
                   td

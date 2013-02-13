@@ -4,7 +4,6 @@
 
 var express = require('express')
   , passport = require('passport')
-  , mongoose = require('mongoose')
   , util = require('util')
   , LocalStrategy = require('passport-local').Strategy
   , routes = require('./routes')
@@ -71,30 +70,6 @@ function ensureAuthenticated(req,res,next){
   if (req.isAuthenticated()) {return next(); }
   res.redirect('/');
 }
-
-mongoose.connect('mongodb://127.0.0.1/passportTest');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function dbActivity(){
-  var mySchema = mongoose.Schema({
-    _id: String,
-    username: String
-  });
-  var theUserData = mongoose.Schema({
-    age: String,
-    fName: String,
-    lName: String,
-    userId: String
-  }, {collection: 'userData'});
-  var userData = mongoose.model('userData', theUserData);
-
-  userData.find({userId: '5116baf5c01b094812000002'}, function results(err, docs){
-    console.log(docs[0]);
-  });
-
-});
-
-
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
