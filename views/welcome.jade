@@ -21,7 +21,7 @@ block content
           div(style='margin: 5px;')
             p Your profile:
             br
-            form
+            form(method='post', action='/demoUpdate')
               table
                 tr
                   td First Name: 
@@ -54,8 +54,8 @@ block content
                   td
                     input(type='text', name='goal')
               br
-            button#save Save
-            button#addPicture Add Picture
+              input#save(class='button', type='submit')Save
+              button#addPicture Add Picture
         .picture
           img.picture(src='images/nightlife-q-c-450-450-6.jpg')
         #clear

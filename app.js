@@ -7,11 +7,10 @@ var express = require('express')
   , util = require('util')
   , LocalStrategy = require('passport-local').Strategy
   , routes = require('./routes')
-  , user = require('./routes/user')
   , htmlz = require('./routes/htmlz')
   , http = require('http')
   , path = require('path')
-  , flash = require('connect-flash')
+  , flash = require('connect-flash');
 
 var Account = require('./account');
 passport.serializeUser(Account.serializeUser());
@@ -40,7 +39,6 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
-var aTest = "Passed from app.js";
 app.get('/', routes.index);
 app.get ('/register', htmlz.register);
 app.get('/logout', function(req,res){
@@ -49,7 +47,6 @@ app.get('/logout', function(req,res){
 });
 
 app.get('/welcome', ensureAuthenticated, htmlz.welcome);
-app.get('/users', user.list);
 
 app.post('/',
   passport.authenticate('local', {failureRedirect: '/'}),
@@ -65,6 +62,8 @@ app.post('/register', function(req,res){
     res.redirect('/');
   });
 });
+
+app.post('/demoUpdate', htmlz.demoUpdate);
 
 function ensureAuthenticated(req,res,next){
   if (req.isAuthenticated()) {return next(); }
