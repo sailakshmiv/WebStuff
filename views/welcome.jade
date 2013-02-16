@@ -34,11 +34,11 @@ block content
                 tr
                   td Email: 
                   td
-                    input(type='email', name='email')
+                    input(type='email', name='email', value='#{email}')
                 tr#append
                   td DOB: 
                   td
-                    input#dob(type='date', name='dob')
+                    input#dob(type='date', name='dob', value='#{dob}')
                 tr
                   td Gender: 
                   td
@@ -48,11 +48,11 @@ block content
                 tr
                   td Starting Weight: 
                   td
-                    input(type='text', name='weight')
+                    input(type='text', name='weight', value='#{weight}')
                 tr
                   td Goal Weight: 
                   td
-                    input(type='text', name='goal')
+                    input(type='text', name='goal', value='#{goal}')
               br
               input#save(class='button', type='submit')Save
               button#addPicture Add Picture
