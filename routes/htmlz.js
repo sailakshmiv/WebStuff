@@ -1,6 +1,9 @@
+var moment = require('moment');
+moment().format();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1/passportTest');
 var db = mongoose.connection;
+
 
 var userSchema = mongoose.Schema({
 	fName: String,
@@ -17,13 +20,13 @@ var userData = mongoose.model('userData', userSchema);
 
 exports.welcome = function(req, res){
 	userData.find({"userId":req.user._id}, function results(err, docs){
-		console.log(docs[0]);
+		var date = moment(docs[0].dob).add('d',1).format('YYYY-MM-DD');
 		res.render('welcome', {
 			title: "Welcome to Fat Track!",
 			firstName: docs[0].fName,
 			lastName: docs[0].lName,
 			email: docs[0].email,
-			dob: docs[0].dob,
+			dob: date,
 			gender: docs[0].gender,
 			weight: docs[0].startWeight,
 			goal: docs[0].goalWeight,
@@ -38,15 +41,7 @@ exports.register = function(req, res){
 
 exports.demoUpdate = function(req, res){
 	var formData = req.body;
-	//console.log(formData);
 	var uID = req.user._id;
-	/*console.log(uID);
-	console.log(formData.fname);
-	console.log(formData.lname);
-	console.log(formData.dob);
-	console.log(formData.email);
-	console.log(formData.weight);
-	console.log(formData.goal);*/
 	userData.update({userId: uID},
 	{
 		fName:formData.fname,
