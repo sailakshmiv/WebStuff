@@ -8,9 +8,9 @@ var userSchema = mongoose.Schema({
 	userId: String,
 	email: String,
 	dob: Date,
+	gender: String,
 	startWeight: String,
 	goalWeight: String
-	
 }, {collection: 'userData'});
 
 var userData = mongoose.model('userData', userSchema);
@@ -24,6 +24,7 @@ exports.welcome = function(req, res){
 			lastName: docs[0].lName,
 			email: docs[0].email,
 			dob: docs[0].dob,
+			gender: docs[0].gender,
 			weight: docs[0].startWeight,
 			goal: docs[0].goalWeight,
 			userAge: docs[0].age
@@ -37,25 +38,27 @@ exports.register = function(req, res){
 
 exports.demoUpdate = function(req, res){
 	var formData = req.body;
+	//console.log(formData);
 	var uID = req.user._id;
-	console.log(uID);
+	/*console.log(uID);
 	console.log(formData.fname);
 	console.log(formData.lname);
 	console.log(formData.dob);
 	console.log(formData.email);
 	console.log(formData.weight);
-	console.log(formData.goal);
+	console.log(formData.goal);*/
 	userData.update({userId: uID},
 	{
 		fName:formData.fname,
 		lName:formData.lname,
 		dob: formData.dob,
+		gender: formData.gender,
 		email: formData.email,
 		startWeight: formData.weight,
 		goalWeight: formData.goal
 	}, function(err,numberAffected,raw){
 		if (err) console.log(err);
-		console.log('Here\'s Mongo\'s response ', raw);
+		//console.log('Here\'s Mongo\'s response ', raw);
 	});
 	res.redirect('welcome#about');
 };

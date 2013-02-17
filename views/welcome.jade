@@ -16,6 +16,8 @@ block content
         #testDiv
           p Welcome !{firstName}, !{lastName}, !{userAge}
       #about
+        - male = (gender == 'male') ? 'selected' : null
+        - female = (gender == 'female') ? 'selected' : null
         p Welcome !{firstName}!  Tell us about yourself.
         .demoG
           div(style='margin: 5px;')
@@ -42,9 +44,9 @@ block content
                 tr
                   td Gender: 
                   td
-                    select#selector
-                      option Female
-                      option Male
+                    select#selector(name='gender')
+                      option(value='female', selected=female) Female
+                      option(value='male', selected=male) Male
                 tr
                   td Starting Weight: 
                   td
