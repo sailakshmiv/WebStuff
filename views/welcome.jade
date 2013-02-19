@@ -12,9 +12,34 @@ block content
         li
           a#tHelp(href='#help')
             span help
-      #home
-        #testDiv
-          p Welcome !{firstName}, !{lastName}, !{userAge}
+      #home        
+        .homeDemo
+          div(style='height: 550px; width: 500px; border-radius: 5px; border: 2px white solid;position: relative')
+            br
+            table
+              tr
+                td Name: !{firstName} !{lastName}
+              tr        
+                td#appendNum Age: 
+              tr
+                td Gender: !{gender}
+              tr
+                td Starting weight: !{weight}
+                td Date:
+              tr
+                td Last Weigh in:
+                td Date:
+              tr
+                td Goal Weight: !{goal}
+                td End Date:
+              tr
+                td Difference from last weigh in:
+              tr
+                td Difference from goal weight:
+            .graph
+              div(style='height: 200px; width: 350px; border-radius: 5px; border: 2px white solid; position: absolute; bottom:25px; left:65px' )
+          #todaysUpdate
+            div(style = 'height: 125px; width: 400px; border-radius: 5px; border: 2px white solid; float: left')
       #about
         - male = (gender == 'male') ? 'selected' : null
         - female = (gender == 'female') ? 'selected' : null
@@ -56,8 +81,8 @@ block content
                   td
                     input(type='text', name='goal', value='#{goal}')
               br
-              input#save(class='button', type='submit')Save
-              button#addPicture Add Picture
+              input#save(class='button', value='Save', type='submit')
+              input#addPicture(class='button', value='Add Picture')
         .picture
           img.picture(src='images/nightlife-q-c-450-450-6.jpg')
         #clear

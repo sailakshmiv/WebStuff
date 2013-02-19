@@ -3,20 +3,20 @@ $(function(){
 	$("#myTabs").tabs("option", "heightStyle", "fill");
 	$("#save").button();
 	$("#addPicture").button();
-	$("#save").click(function () {
-	    var dob = $("#dob").val();
-	    var age = getAge(dob);
-        var ageAppend = '<td id = "age">Age: '+age+'</td>'
-	    var emptyCheck = $("#age").html();
-	    if (emptyCheck !== undefined){
-	        $("#age").remove();
-	    }
-	    if (isNaN(age)) {
-	        alert("Invalid birthdate");
-	    }
-	    else $("#append").append(ageAppend);
-	    
-	});
+    var dob = $("#dob").val();
+    var age = getAge(dob);
+    var ageAppend = '<td id = "age">Age: '+age+'</td>';
+    var emptyCheck = $("#age").html();
+    if (emptyCheck !== undefined){
+        $("#age").remove();
+    }
+    if (isNaN(age)) {
+        alert("Invalid birthdate");
+    }
+    else {
+		$("#append").append(ageAppend);
+		$("#appendNum").append(age);
+	}
 });
 
 function getAge(dateString) {
