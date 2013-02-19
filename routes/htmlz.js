@@ -20,7 +20,7 @@ var userData = mongoose.model('userData', userSchema);
 
 exports.welcome = function(req, res){
 	userData.find({"userId":req.user._id}, function results(err, docs){
-		var date = moment(docs[0].dob).add('d',1).format('YYYY-MM-DD');
+		var date = moment.utc(docs[0].dob).format('YYYY-MM-DD');
 		res.render('welcome', {
 			title: "Welcome to Fat Track!",
 			firstName: docs[0].fName,
@@ -29,8 +29,7 @@ exports.welcome = function(req, res){
 			dob: date,
 			gender: docs[0].gender,
 			weight: docs[0].startWeight,
-			goal: docs[0].goalWeight,
-			userAge: docs[0].age
+			goal: docs[0].goalWeight
 		});
 	});
 };

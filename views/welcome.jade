@@ -1,7 +1,7 @@
 extends layout2
 
 block content
-    #myTabs
+    #myTabs(style='width:1280px;')
       ul
         li
           a#tHome(href='#home')
@@ -13,8 +13,7 @@ block content
           a#tHelp(href='#help')
             span help
       #home        
-        .homeDemo
-          div(style='height: 550px; width: 500px; border-radius: 5px; border: 2px white solid;position: relative')
+        #homeDemo(style='height: 550px; width: 500px; border-radius: 5px; border: 2px white solid;float:left')
             br
             table
               tr
@@ -36,12 +35,10 @@ block content
                 td Difference from last weigh in:
               tr
                 td Difference from goal weight:
-            .graph
-              div(style='height: 200px; width: 350px; border-radius: 5px; border: 2px white solid; position: absolute; bottom:25px; left:65px' )
-          #todaysUpdate
-            div(style = 'height: 125px; width: 400px; border-radius: 5px; border: 2px white solid; float: left')
+            #graph(style='height: 200px; width: 450px; border-radius: 5px; border: 2px white solid; margin-left:20px;margin-top:70px;')
+          #todaysUpdate(style = 'height: 125px; width: 400px; border-radius: 5px; border: 2px white solid; float: right')
       #about
-        - male = (gender == 'male') ? 'selected' : null
+        - male = (gender == 'male') ? 'selected' : null 
         - female = (gender == 'female') ? 'selected' : null
         p Welcome !{firstName}!  Tell us about yourself.
         .demoG
