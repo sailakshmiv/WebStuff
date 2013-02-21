@@ -13,7 +13,7 @@ block content
           a#tHelp(href='#help')
             span help
       #home        
-        #homeDemo(style='height: 550px; width: 500px; border-radius: 5px; border: 2px white solid;float:left')
+        #homeDemo(style='height: 500px; width: 500px; border-radius: 5px; border: 2px white solid;float:left')
             br
             table
               tr
@@ -35,8 +35,22 @@ block content
                 td Difference from last weigh in:
               tr
                 td Difference from goal weight:
-            #graph(style='height: 200px; width: 450px; border-radius: 5px; border: 2px white solid; margin-left:20px;margin-top:70px;')
-          #todaysUpdate(style = 'height: 125px; width: 400px; border-radius: 5px; border: 2px white solid; float: right')
+            #graph(style='height: 200px; width: 450px; border-radius: 5px; border: 2px white solid; margin-left:20px;margin-top:20px;')
+              img.picture(style = 'height:200px;width:450px;', src='images/placeholderchart1.jpg')
+        #pictures(style = 'height: 620px; width: 690px; border-radius: 5px; border: 2px white solid;float: right')  
+          #pic1(style = 'height: 550px; width:330px; border-radius: 5px; border:2px white solid; float:left; margin-top:5px;margin-left:5px')
+          #pic2(style = 'height: 550px; width:330px; border-radius: 5px; border:2px white solid; float:right; margin-top:5px;margin-right:5px')
+        #todaysUpdate(style = 'height: 100px; width: 400px; border-radius: 5px; border: 2px white solid; float: left;margin-top:15px')
+          form(method='post', action='/nothingYet')
+            table
+              tr
+                td Today's weigh in: 
+                td
+                  input(style='width: 50px',type='text', name='todayWeighIn')
+              tr
+                td 
+            input(class='button', type='button', value='Save')
+          
       #about
         - male = (gender == 'male') ? 'selected' : null 
         - female = (gender == 'female') ? 'selected' : null
