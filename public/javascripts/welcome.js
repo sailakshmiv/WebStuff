@@ -2,6 +2,7 @@ $(function(){
 	$("#myTabs").tabs();
 	$("#myTabs").tabs("option", "heightStyle", "fill");
 	$("#save").button();
+    $("#dailyUpdate").button();
 	$("#addPicture").button();
     var dob = $("#dob").val();
     var age = getAge(dob);

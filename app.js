@@ -8,6 +8,7 @@ var express = require('express')
   , LocalStrategy = require('passport-local').Strategy
   , routes = require('./routes')
   , htmlz = require('./routes/htmlz')
+  , errors = require('./routes/errors')
   , http = require('http')
   , path = require('path')
   , flash = require('connect-flash');
@@ -69,6 +70,21 @@ function ensureAuthenticated(req,res,next){
   if (req.isAuthenticated()) {return next(); }
   res.redirect('/');
 }
+app.get('/images/*', function(req,res){
+  res.sendfile(__dirname + '/public/' + req.url);
+});
+
+app.get('/stylesheets/*', function(req,res){
+  res.sendfile(__dirname + '/public/' + req.url);
+});
+
+app.get('/javascripts/*', function(req,res){
+  res.sendfile(__dirname + '/public/' + req.url);
+});
+
+app.get('*', errors.fourOhFour);
+app.post('*', errors.fourOhFour);
+app.head('*', errors.fourOhFour);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

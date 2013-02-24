@@ -29,7 +29,8 @@ exports.welcome = function(req, res){
 			dob: date,
 			gender: docs[0].gender,
 			weight: docs[0].startWeight,
-			goal: docs[0].goalWeight
+			goal: docs[0].goalWeight,
+			daysLeft: "PlaceHolder"
 		});
 	});
 };
@@ -56,3 +57,4 @@ exports.demoUpdate = function(req, res){
 	});
 	res.redirect('welcome#about');
 };
+
