@@ -1,6 +1,56 @@
+/*
+	Styles by ID
+*/
+
+#addPic {
+    margin-left: 50px;
+}
+#clear {
+    clear: both;
+}
+#graph {
+	height: 200px;
+	width: 450px;
+	border-radius: 5px;
+	border: 2px white solid;
+	margin-left:23px;
+	margin-top:20px;
+}
+#graphPic{
+	height: 200px;
+	width:450px;
+}
+#homeDemo{
+	height: 500px;
+	width: 500px;
+	border-radius: 5px;
+	border: 2px white solid;
+	float:left;
+}
+
 #myTabs{
 	height: 700px;
+	width: 1280px;
 }
+#pictures{
+	height: 620px;
+	width: 690px;
+	border-radius:5px;
+	border: 2px white solid;
+	float: right;
+}
+#todaysUpdate{
+	height: 100px;
+	width: 400px;
+	border-radius: 5px;
+	border: 2px white solid;
+	float: left;
+	margin-top:15px;
+}
+
+/*
+	Styles by Class
+*/
 .demoG, .picture {
     position: relative;
     height: 450px;
@@ -10,22 +60,25 @@
 .demoG{
 	float: left;
     border: 2px white solid;
-	}
+}
+.image{
+    height: 550px;
+    width: 330px;
+    border-radius:5px;
+}
 .picture{
 	float: right;
 }
-#save{
-
+.pics {
+    height: 550px;
+    width: 330px;
+    border-radius: 5px;
+    border: 2px white solid;
+    margin-top: 5px;
 }
-img{
+.startPhoto{
 	height: 450px;
 	width: 450px;
 	border-radius: 5px;
 	border: 2px white solid;
-}
-#addPic {
-    margin-left: 50px;
-}
-#clear {
-    clear: both;
 }

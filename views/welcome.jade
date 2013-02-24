@@ -1,7 +1,7 @@
 extends layout2
 
 block content
-    #myTabs(style='width:1280px;')
+    #myTabs
       ul
         li
           a#tHome(href='#home')
@@ -13,7 +13,7 @@ block content
           a#tHelp(href='#help')
             span help
       #home        
-        #homeDemo(style='height: 500px; width: 500px; border-radius: 5px; border: 2px white solid;float:left')
+        #homeDemo
             table
               tr
                 td Name: !{firstName} !{lastName}
@@ -34,23 +34,23 @@ block content
                 td Difference from last weigh in:
               tr
                 td Difference from goal weight:
-            #graph(style='height: 200px; width: 450px; border-radius: 5px; border: 2px white solid; margin-left:20px;margin-top:20px;')
-              img.picture(style = 'height:200px;width:450px;', src='images/placeholderchart1.jpg')
-        #pictures(style = 'height: 620px; width: 690px; border-radius: 5px; border: 2px white solid;float: right')  
-          #pic1(style = 'height: 550px; width:330px; border-radius: 5px; border:2px white solid; float:left; margin-top:5px;margin-left:5px')
-            img(style='height:550px; width:330px;border-radius:5px', src='images/fat_Before.png')
-          #pic2(style = 'height: 550px; width:330px; border-radius: 5px; border:2px white solid; float:right; margin-top:5px;margin-right:5px')
-            img(style='height:550px; width:330px;border-radius:5px', src='images/fat_after.png')
-        #todaysUpdate(style = 'height: 100px; width: 400px; border-radius: 5px; border: 2px white solid; float: left;margin-top:15px')
+            #graph
+              img#graphPic(src='images/placeholderchart1.jpg')
+        #pictures
+          #pic1.pics(style='float:left; margin-left:5px')
+            img.image(src='images/fat_Before.png')
+          #pic2.pics(style='float:right;margin-right:5px')
+            img.image(src='images/fat_after.png')
+        #todaysUpdate
           form(method='post', action='/nothingYet')
             table
               tr
                 td 
                   |Today's weigh in: 
-                  input(style='width: 35px;height:20px',type='text', name='todayWeighIn')
-                td 
+                  input(type='text', name='todayWeighIn',style='width: 35px;height:20px')
+                td
                   |Days left: !{daysLeft}
-          input#dailyUpdate(class='button',type='submit',value='Save',style='margin-bottom:0px')
+          input#dailyUpdate(class='button',type='submit',value='Save',style='margin-top:25px')
             | Save
       #about
         - male = (gender == 'male') ? 'selected' : null 
@@ -59,7 +59,6 @@ block content
         .demoG
           div(style='margin: 5px;')
             p Your profile:
-            br
             form(method='post', action='/demoUpdate')
               table
                 tr
@@ -96,6 +95,6 @@ block content
               input#save(class='button', value='Save', type='submit')
               input#addPicture(class='button', value='Add Picture')
         .picture
-          img.picture(src='images/nightlife-q-c-450-450-6.jpg')
+          img.startPhoto(src='images/nightlife-q-c-450-450-6.jpg')
         #clear
       #help
