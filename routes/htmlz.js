@@ -1,7 +1,7 @@
 var moment = require('moment');
 moment().format();
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1/passportTest');
+mongoose.connect('mongodb://0.0.0.0:27017/passportTest');
 var db = mongoose.connection;
 
 
